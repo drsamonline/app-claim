@@ -1,0 +1,15 @@
+{
+  "name": "Claim — where it came from",
+  "short_name": "Claim",
+  "description": "Trace a claim back through its citations and see how many independent sources it really has, and flag the manipulation techniques in a passage with the sentence quoted.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f5f2",
+  "theme_color": "#101418",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
