@@ -1,92 +1,76 @@
 <!DOCTYPE html>
 <html lang="en-IN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Claim — where it came from, and how it travelled</title>
-<meta name="description" content="Trace a claim back through its citations and see how many independent sources it really has, and flag the manipulation techniques in a passage with the sentence quoted. It never says whether a claim is true.">
-<meta name="theme-color" content="#101418">
+<meta name="description" content="Trace a claim back through its citations, see how many independent sources it really has, and flag the techniques used to sell it.">
+<meta name="theme-color" content="#12100e">
 <style>
-  :root{--bg:#f6f5f2;--panel:#fff;--ink:#14181d;--muted:#5d666f;--line:#d9d6cf;--accent:#4a3f7a}
+  :root{--paper:#f4efe4;--ink:#14110d;--red:#9b2c1f;--rule:#1a1611;--muted:#5b5346;
+        --serif:Georgia,"Iowan Old Style","Times New Roman",serif;--mono:ui-monospace,Menlo,Consolas,monospace}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif}
-  main{max-width:780px;margin:0 auto;padding:48px 20px 64px}
-  h1{font-size:34px;line-height:1.15;letter-spacing:-.02em;margin:0 0 10px}
-  .lede{font-size:18px;color:var(--muted);margin:0 0 26px}
-  .cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:9px}
-  .na{margin:24px 0 0;padding:12px 14px;border:1px solid #cfc7e6;border-left:4px solid var(--accent);border-radius:9px;background:#f7f5fd;color:#3d3468;font-size:14px;font-weight:600}
-  .status{margin:22px 0;padding:14px 16px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:9px;background:var(--panel);font-size:14px}
-  .status b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
-  h2{font-size:17px;margin:30px 0 8px}
-  ul{padding-left:20px}li{margin:4px 0}
-  code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:13px;background:#eeede9;padding:1px 5px;border-radius:4px}
-  table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
-  th,td{text-align:left;border-bottom:1px solid var(--line);padding:7px 8px;vertical-align:top}
-  th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
-  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
-  a{color:var(--accent)}
-</style>
-</head>
-<body>
-<main>
-  <h1>Claim</h1>
-  <p class="lede">Where it came from, and how it travelled. Ten repeats of one source are still one source — and the app says both
-  numbers out loud.</p>
+  body{margin:0;background:#12100e;color:var(--ink);font-family:var(--serif)}
+  .sheet{max-width:860px;margin:0 auto;background:var(--paper);min-height:100vh;padding:0 0 64px;
+         box-shadow:0 0 0 1px #2a241c, 0 24px 60px rgba(0,0,0,.5)}
+  .masthead{border-bottom:3px double var(--rule);padding:26px 40px 14px;text-align:center}
+  .kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .masthead h1{font-size:clamp(44px,9vw,86px);line-height:.92;margin:8px 0 6px;letter-spacing:-.03em;font-weight:700}
+  .masthead .dek{font-size:15px;color:var(--muted);margin:0;font-style:italic}
+  .rule{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+        text-transform:uppercase;color:var(--muted);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:6px 40px}
+  .cols{column-count:2;column-gap:34px;column-rule:1px solid #cfc6b4;padding:22px 40px 0}
+  @media (max-width:640px){.cols{column-count:1;padding:18px 22px 0}.masthead,.rule{padding-left:22px;padding-right:22px}}
+  h2{font-size:12px;font-family:var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--red);
+     margin:20px 0 6px;break-after:avoid}
+  p{font-size:15.5px;line-height:1.62;margin:0 0 12px;text-align:justify;hyphens:auto}
+  .drop::first-letter{float:left;font-size:52px;line-height:.82;padding:4px 8px 0 0;font-weight:700}
+  .counts{border:2px solid var(--rule);padding:12px 14px;margin:14px 0;break-inside:avoid;background:#faf6ec}
+  .counts table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12.5px}
+  .counts td{padding:5px 0;border-bottom:1px dotted #c9c0ae}
+  .counts tr:last-child td{border-bottom:0}
+  .counts td:last-child{text-align:right;font-weight:700}
+  .stamp{display:inline-block;border:2px solid var(--red);color:var(--red);padding:3px 9px;font-family:var(--mono);
+         font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;transform:rotate(-2.5deg)}
+  .cta{display:block;text-align:center;margin:22px 0 0;padding:14px;background:var(--ink);color:var(--paper);
+       text-decoration:none;font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;break-inside:avoid}
+  .cta:hover{background:var(--red)}
+  blockquote{margin:14px 0;padding-left:12px;border-left:3px solid var(--red);font-style:italic;font-size:14.5px;color:var(--muted)}
+  .foot{padding:18px 40px 0;border-top:3px double var(--rule);margin-top:26px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .foot a{color:var(--red)}
+</style></head>
+<body><div class="sheet">
+  <div class="masthead">
+    <div class="kicker">The Claim Desk · est. 2026</div>
+    <h1>Claim</h1>
+    <p class="dek">Where it came from, and how many times it went round.</p>
+  </div>
+  <div class="rule"><span>Provenance</span><span>Red flag</span><span>No verdict</span></div>
 
-  <a class="cta" href="play/index.html">Open Claim</a>
+  <div class="cols">
+    <p class="drop">Ten outlets running the same paragraph is not ten sources. It is one source, ten times — and the difference is the only thing this app is about.</p>
+    <p>Paste a claim, add each citation as a hop, and Claim walks the chain back. It counts three things that people conflate: how many citations there are, how many repetitions that makes, and how many <em>independent origins</em> are left when you get to the end.</p>
 
-  <p class="na">This shows where a claim came from and how it travelled. It does not say whether it is true, and it does not judge the
-  person who wrote it.</p>
+    <div class="counts">
+      <table>
+        <tr><td>Citations</td><td>10</td></tr>
+        <tr><td>Repetitions</td><td>10</td></tr>
+        <tr><td>Independent sources</td><td>1</td></tr>
+      </table>
+    </div>
 
-  <div class="status">
-    <b>Status</b>
-    Built and working offline: a chain of hops where each one names <em>who cited whom</em>; the origin marked, a chain that runs out
-    marked untraced; citations, repetitions and independent sources counted and shown as three separate numbers; a broken link kept
-    with the date it was last read; and a red-flag reader that names the technique and quotes the sentence.
-    <br><b>Release</b>: Windows EXE, Android APK and Linux binary, built from this source in CI — <a href="https://github.com/drsamonline/app-claim/releases/tag/app-latest">app-latest</a>.
-    <br><b>Not built</b>: any search or fetching. The app does not look anything up — you record what you found, and it never
-    presents an old chain as a current one, because it cannot check.
+    <h2>And the other half</h2>
+    <p>Red Flag reads a passage and names the technique being used — the false dilemma, the loaded question, the appeal to a nameless authority — <em>quoting the sentence</em> it found it in. It never says whether the claim is true.</p>
+    <blockquote>“A passage it has not read returns no list at all, because an empty list reads as a verdict.”</blockquote>
+
+    <h2>What it refuses</h2>
+    <p>It will not tell you a claim is true or false, will not judge the author, and will not assume the last hop is the origin. A chain that runs out is marked <span class="stamp">untraced</span> rather than guessed at.</p>
+
+    <a class="cta" href="play/index.html">Open the desk →</a>
   </div>
 
-  <h2>What it does</h2>
-  <ul>
-    <li>Records a claim and the hops it travelled, each hop naming who cited whom.</li>
-    <li>Counts <strong>citations</strong>, <strong>repetitions</strong> and <strong>independent sources</strong> — three numbers that differ, which is the whole point.</li>
-    <li>Marks the origin, and marks a chain that runs out as <em>untraced</em> rather than assuming the last thing it found is the source.</li>
-    <li>Keeps a broken link, with the date it was last read.</li>
-    <li>Flags manipulation techniques in a passage, naming the technique and quoting the sentence so you can disagree with the flag.</li>
-  </ul>
-
-  <h2>What it will not do</h2>
-  <ul>
-    <li><strong>Say whether a claim is true.</strong> It shows the chain; the judgement stays with you.</li>
-    <li><strong>Judge the author.</strong> It flags techniques, not people.</li>
-    <li><strong>Offer an empty flag list for text it did not read.</strong> An empty list only ever means “read, and clean”.</li>
-    <li><strong>Assume the last hop is the origin.</strong> A chain that runs out is marked untraced.</li>
-    <li><strong>Shorten a chain that fails to parse.</strong> It is shown as broken at the link that failed.</li>
-    <li><strong>Use a key or a network.</strong> No <code>fetch</code>, no endpoint; CSP <code>connect-src 'none'</code>.</li>
-  </ul>
-
-  <h2>When things go wrong</h2>
-  <table>
-    <tr><th>Case</th><th>What happens</th></tr>
-    <tr><td>Bad input</td><td>A claim with no hops → “no source found”, with the search terms used. A passage too short to read → refused, with no flag list at all.</td></tr>
-    <tr><td>No network</td><td>Nothing changes; the app never looked anything up, so it never presents an old chain as a current one.</td></tr>
-    <tr><td>Storage full or unavailable</td><td>The trace is not saved and the app says so; the chain stays on screen for the session.</td></tr>
-    <tr><td>Corrupt saved state</td><td>Reported and offered for export; a chain that fails to parse is shown as broken at the link that failed.</td></tr>
-  </table>
-
-  <h2>How to run it</h2>
-  <ul>
-    <li><strong>Here</strong>: <a href="play/index.html">play/index.html</a>, or install it from your browser's menu.</li>
-    <li><strong>Offline file</strong>: open <code>docs/play/index.html</code> straight from disk.</li>
-    <li><strong>Tests</strong>: <code>node tests/self-tests.js</code> — the spec's countable “done means” is asserted there.</li>
-  </ul>
-
-  <footer>
-    PolyForm Noncommercial 1.0.0 · (c) 2026 Dr Sohil Momin ·
-    <a href="https://github.com/drsamonline/app-claim">source</a>
-  </footer>
-</main>
-</body>
-</html>
+  <div class="foot">
+    Runs entirely on this device: no fetch, no endpoint, no account.
+    Windows · Android · Linux builds at <a href="https://github.com/drsamonline/app-claim/releases/tag/app-latest">app-latest</a>.
+    PolyForm Noncommercial 1.0.0 · (c) 2026 Dr Sohil Momin.
+  </div>
+</div></body></html>
