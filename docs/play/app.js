@@ -190,8 +190,8 @@
       { citedBy: "a WhatsApp group", source: "The Daily", isOrigin: true }
     ].forEach(function (h) { state.claim = C.addHop(state.claim, h, Date.now()).claim; });
     els.hopCard.hidden = false;
-    persist();
-    traceIt();
+    var saved = persist();
+    traceIt();if (saved) 
     setStatus("warn", "Example loaded: three citations, all of them ending at one origin \u2014 one independent source, not three.");
   });
 
