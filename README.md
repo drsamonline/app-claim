@@ -11,6 +11,7 @@ Where a claim came from, and how it travelled. **It does not say whether the cla
 - **Plan row:** #15 of 37 in `drsamonline/forge` → `QUEUE/PLAN.json`
 - **Specs absorbed:** `app-provenance` (lead), `app-red-flag`
 - **Licence:** PolyForm Noncommercial 1.0.0
+- **Sponsor:** [github.com/sponsors/drsamonline](https://github.com/sponsors/drsamonline) — free, offline, no account
 
 ## Status
 
